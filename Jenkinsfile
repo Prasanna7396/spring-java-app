@@ -36,7 +36,7 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv('sonarqube-8.9.2') {
-          sh "mvn sonar:sonar -Dsonar.projectKey=JavaWebAppDev"
+          sh "mvn sonar:sonar -Dsonar.projectKey=SpringWebAppDev"
         }
       }
     }
