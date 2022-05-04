@@ -1,4 +1,4 @@
-# WebJavaApp
+# Spring Java Web Application
 This is a simple java spring application.
 The srping application is dockerized and the docker image is pushed to a docker hub public repo.
 The project has two branches Dev and QA.
