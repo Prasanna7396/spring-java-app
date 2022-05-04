@@ -47,7 +47,7 @@ pipeline {
       }
       post {
         success {
-          echo "Pushing the docker image to docker hub"
+          echo "Pushing the docker image to docker hub repo"
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           sh 'docker push "$DOCKERHUB_USER"/"$REGISTRY_NAME":"Dev"-"$BUILD_NUMBER"'
         }
