@@ -8,12 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Date;
 
-//Simple controller class
 @Controller
 public class WelcomeController {
-
     private final Logger logger = LoggerFactory.getLogger(WelcomeController.class);
-
     @GetMapping("/")
     public String index(Model model) {
         logger.debug("Welcome to our web page ..");
@@ -21,14 +18,12 @@ public class WelcomeController {
         model.addAttribute("env", getEnv());
 	model.addAttribute("today", new Date());
         return "index";
-
     }
-    //Methods for controller class
     public String getMessage() {
         return "Hello World - Prasanna welcomes you.";
     }
     public String getEnv() {
-	return "main";		    
+	return "dev";		    
     }
 
 }

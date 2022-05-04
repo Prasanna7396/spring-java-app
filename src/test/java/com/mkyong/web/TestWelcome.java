@@ -21,18 +21,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 @ContextConfiguration(classes = SpringConfig.class)
 public class TestWelcome {
-
     private MockMvc mockMvc;
-
     @Autowired
     private WebApplicationContext webAppContext;
-
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
     }
-
-    //Test class No 1
     @Test
     public void testWelcomeMsg() throws Exception {
 
@@ -45,8 +40,6 @@ public class TestWelcome {
                 .andExpect(model().attribute("msg", "Hello World - Prasanna welcomes you."));
 
     }
-
-    //Test class No 2
     @Test
         public void testEnvMsg() throws Exception {
 	
@@ -56,13 +49,16 @@ public class TestWelcome {
 		.andExpect(status().isOk())
 		.andExpect(view().name("index"))
 		.andExpect(forwardedUrl("/WEB-INF/views/index.jsp"))
-		.andExpect(model().attribute("env", "main"));
+		.andExpect(model().attribute("env", "dev"));
 
     }
-
-    //Test class No 3
     @Test
     public void testRandomNumber() {
-        assertEquals(5, 2 + 3);
+        assertEquals(6, 2 + 4);
     }
+    @Test
+    public void testRandomString() {
+        assertEquals("CitiusTech", "CitiusTech");
+  }
 }
+
