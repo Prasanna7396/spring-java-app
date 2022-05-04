@@ -54,11 +54,11 @@ public class TestWelcome {
     }
     @Test
     public void testRandomNumber() {
-        assertEquals(6, 2 + 4);
+        assertEquals(12, 6 + 6);
     }
     @Test
     public void testRandomString() {
-        assertEquals("CitiusTech", "CitiusTech");
+        assertEquals("India", "India");
   }
 }
 
