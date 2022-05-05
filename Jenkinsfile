@@ -58,7 +58,7 @@ pipeline {
           emailext body: "Please approve the below url build for Deployment \n ${env.BUILD_URL} \n NOTE: If not approved, build will be aborted by default",
           recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
           mimeType: 'text/html',
-          subject: "Main Deployment Approval - Build ${env.currentBuild}-${env.BUILD_NUMBER} | Job: ${env.JOB_NAME}"
+          subject: "Main Deployment Approval - Build : ${env.BUILD_NUMBER} | Job: ${env.JOB_NAME}"
 
           timeout(time: 5, unit: 'DAYS') {
           input message: 'Approve Main Deployment?'
@@ -69,7 +69,7 @@ pipeline {
   }
   post {
     always {
-        emailext body: "Deployment Status: ${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+        emailext body: "Deployment Status: ${currentBuild.currentResult}\n Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
         recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
         subject: "Main Deployment - Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
     }
