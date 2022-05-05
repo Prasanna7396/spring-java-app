@@ -64,7 +64,7 @@ pipeline {
   }
   post {
     always {
-        emailext body: "Deployment Status: ${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+        emailext body: "Deployment Status: ${currentBuild.currentResult}: \n Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}",
         recipientProviders: [[$class: 'DevelopersRecipientProvider'],[$class: 'RequesterRecipientProvider']],
         subject: "Dev Deployment -  Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
     }
