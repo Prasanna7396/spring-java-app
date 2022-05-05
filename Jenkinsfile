@@ -22,7 +22,7 @@ pipeline {
       }
       post {
         success {
-          sh 'echo "Testing is completed!"'
+          sh 'echo "Testing is completed!!"'
         }
       }
     }
