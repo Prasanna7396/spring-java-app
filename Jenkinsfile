@@ -37,7 +37,7 @@ pipeline {
         }
       }
     }
-    stage('Docker Build and Image Push') {
+    stage('Build Docker Image and Push Image to DockerHub') {
       steps {
         echo "Creating the docker image"
         sh 'docker build -t "$DOCKERHUB_USER"/"$REGISTRY_NAME":"main"-"$BUILD_NUMBER" .'
