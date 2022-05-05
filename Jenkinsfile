@@ -17,7 +17,7 @@ pipeline {
         ]])
       }
     }
-    stage('Maven Build and Artifact archival') {
+    stage('Maven build and Artifact archival') {
       steps {
         sh 'mvn clean package'
       }
