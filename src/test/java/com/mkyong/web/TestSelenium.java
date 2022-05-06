@@ -45,7 +45,7 @@ public class TestSelenium {
 	   
         String envText = driver.findElement(By.id("myEnv")).getText();
 	System.out.println("envText is --> "+ envText); 
-	assertEquals("devq", envText);
+	assertEquals("dev", envText);
 	   
 	String dateText = driver.findElement(By.id("myTime")).getText();
 	System.out.println("Date --> "+ dateText); 
