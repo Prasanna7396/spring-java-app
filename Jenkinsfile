@@ -18,13 +18,17 @@ pipeline {
     }
     stage('Selenium test cases') {
       steps {
-        sh 'mvn clean test -Dtest="TestSelenium" surefire-report:report-only'
-      }
-      post {
-        success {
-          sh 'echo "Testing is completed!!"'
+	script {		
+	  try {
+           sh 'mvn clean test -DMaven.test.failure.ignore=true -Dtest="TestSelenium" surefire-report:report-only'
+           echo "Testing has been completed. !!"
+	  }
+          catch (Exception e) {
+           echo 'Excpetion has occurred' + e.toString()
+           echo 'Error has occured while running Selenium Test cases, please check the report"		
+          }    
         }
-      }
+      }	
     }
     stage('SonarQube Analysis') {
       steps {
@@ -56,7 +60,7 @@ pipeline {
          mimeType: 'text/html',
          subject: "QA Test Report - Build No - ${env.BUILD_NUMBER} | Job: ${env.JOB_NAME}"
 
-        timeout(time: 5, unit: 'DAYS') {
+        timeout(time: 1, unit: 'DAYS') {
           input message: 'Approve QA Deployment?'
         }
         sh 'docker run -d -p 8092:8080 --name java-qa-"$BUILD_NUMBER" "$DOCKERHUB_USER"/"$REGISTRY_NAME":"QA"-"$BUILD_NUMBER"'
