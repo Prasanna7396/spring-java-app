@@ -25,7 +25,7 @@ pipeline {
 	  }
           catch (Exception e) {
            echo 'Excpetion has occurred' + e.toString()
-           echo 'Error has occured while running Selenium Test cases, please check the report"		
+           echo 'Error has occured while running Selenium Test cases, please check the report'		
           }    
         }
       }	
