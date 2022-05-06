@@ -20,7 +20,8 @@ pipeline {
       steps {
 	script {		
 	  try {
-           sh 'mvn clean test -DMaven.test.failure.ignore=true -Dtest="TestSelenium" surefire-report:report-only'
+           sh 'mvn clean test -DMaven.test.failure.ignore=true -Dtest="TestSelenium"'
+           sh 'mvn surefire-report:report-only'
            echo "Testing has been completed. !!"
 	  }
           catch (Exception e) {
